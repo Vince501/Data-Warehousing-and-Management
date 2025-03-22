@@ -18,9 +18,7 @@ FROM Sales.OrderLines;
 
 -- Section 2: Data Conversion with CONVERT
 -- 3. Formatting Date Using CONVERT:
-SELECT 
-    InvoiceID,
-    InvoiceDate,
+SELECT InvoiceID, InvoiceDate,
     CONVERT(VARCHAR(10), InvoiceDate, 101) AS 'DateFormat_101_(MM/DD/YYYY)',
     CONVERT(VARCHAR(10), InvoiceDate, 103) AS 'DateFormat_103_(DD/MM/YYYY)',
     CONVERT(VARCHAR(19), InvoiceDate, 120) AS 'DateFormat_120_(YYYY-MM-DD HH:MI:SS)'
@@ -60,7 +58,8 @@ WHERE TypicalWeightPerUnit > 5;
 -- 8. Using CHAR and ASCII to Examine Character Codes:
 SELECT CustomerName,
     LEFT(CustomerName, 1) AS First_Letter, -- Getting the First Letter
-    ASCII(LEFT(CustomerName, 1)) AS ASCII_Code --Getting the ASCII code
+    ASCII(LEFT(CustomerName, 1)) AS ASCII_Code, --Getting the ASCII code
+	CHAR (ASCII(LEFT(CustomerName, 1))) AS 'Character of the ASCII' --Getting the Character
 FROM Sales.Customers
 WHERE CustomerID < 10;
 
